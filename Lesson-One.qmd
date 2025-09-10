@@ -1,0 +1,23 @@
+---
+title: "Lesson One"
+format: html
+#This is YAML comment, will not be rendered
+---
+
+# Introduction
+
+This is a simple Quarto lesson with Python and R code chunks.<!-- This is a markdown comment, will not be rendered-->
+
+# Python chunk
+
+```{python}
+# Python code example
+import numpy as np
+print("Hello from Python!")
+print(f"Random number: {np.random.rand()}")
+```
+# R chuck
+```{r}
+print("Hello from R!")
+print(runif(1))
+```
