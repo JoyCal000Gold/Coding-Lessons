@@ -1,47 +1,58 @@
-nname: Render Quarto Project
+name: Render Quarto Document
 
 on:
   push:
-    branches: [main]
+    paths:
+      - "**/*.qmd"
+      - ".github/workflows/render.yml"
+      - "quarto.yml"
+
+env:
+  R_LIBS_USER: ${{ github.workspace }}/.R/library
 
 jobs:
   render:
     runs-on: ubuntu-latest
-    env:
-      R_LIBS_USER: ${{ github.workspace }}/.R/library
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Cache R packages
-      uses: actions/cache@v3
-      with:
-        path: ${{ env.R_LIBS_USER }}
-        key: ${{ runner.os }}-r-packages-${{ hashFiles('**/*.qmd') }}
-        restore-keys: |
-          ${{ runner.os }}-r-packages-
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: "1.4.550"
 
-    - name: Cache pip packages
-      uses: actions/cache@v3
-      with:
-        path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
 
-    - name: Install Quarto CLI
-      run: |
-        wget https://github.com/quarto-dev/quarto-cli/releases/latest/download/quarto-linux-amd64.deb
-        sudo dpkg -i quarto-linux-amd64.deb
+      - name: Cache R packages
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-r-packages-v1
+          restore-keys: |
+            ${{ runner.os }}-r-packages-
 
-    - name: Install R dependencies
-      run: |
-        Rscript -e "if (!requireNamespace('remotes', quietly=TRUE)) install.packages('remotes')"
-        Rscript -e "remotes::install_deps(dependencies=TRUE)"
+      - name: Install R packages
+        run: |
+          Rscript -e 'install.packages(c("knitr", "rmarkdown"), repos="https://cloud.r-project.org")'
 
-    - name: Install Python dependencies
-      run: pip install -r requirements.txt
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
 
-    - name: Render Quarto project
-      run: quarto render
+      - name: Cache pip
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-packages-v1
+          restore-keys: |
+            ${{ runner.os }}-pip-packages-
+
+      - name: Install Python packages
+        run: pip install numpy
+
+      - name: Render Quarto
+        run: quarto render
