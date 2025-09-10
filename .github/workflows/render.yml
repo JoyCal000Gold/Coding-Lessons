@@ -1,11 +1,10 @@
-.github/workflows/render.yml
 name: Render Quarto Document
 
 on:
   push:
     paths:
       - "**.qmd"
-      - "**/render.yml"
+      - ".github/workflows/render.yml"
 
 jobs:
   render:
@@ -26,11 +25,11 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.10'
+          python-version: "3.10"
 
       - name: Install Python packages
         run: |
-          pip install numpy  # or any others you use
+          pip install numpy
 
       - name: Install R packages
         run: |
