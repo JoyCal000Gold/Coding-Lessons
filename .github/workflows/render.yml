@@ -1,51 +1,28 @@
-name: Render Quarto Document
+name: Render Quarto Project
 
 on:
   push:
-    paths:
-      - "**.qmd"
-      - ".github/workflows/render.yml"
-      - "quarto.yml"
-
-env:
-  R_LIBS_USER: ${{ github.workspace }}/.R/library
+    branches: [main]  # or your default branch
 
 jobs:
   render:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
+    - name: Checkout repo
+      uses: actions/checkout@v3
 
-      - name: Setup Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          version: "1.4.550"
+    - name: Install Quarto
+      run: |
+        wget https://github.com/quarto-dev/quarto-cli/releases/latest/download/quarto-linux-amd64.deb
+        sudo dpkg -i quarto-linux-amd64.deb
 
-      - name: Setup R
-        uses: r-lib/actions/setup-r@v2
+    - name: Render Quarto site
+      run: quarto render
 
-      - name: Cache R packages
-        uses: actions/cache@v3
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-packages-${{ hashFiles('**/*.qmd') }}
-          restore-keys: |
-            ${{ runner.os }}-r-packages-
-
-      - name: Install R packages
-        run: |
-          Rscript -e 'install.packages(c("knitr", "rmarkdown"), repos="https://cloud.r-project.org")'
-
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-
-      - name: Install Python packages
-        run: |
-          pip install numpy
-
-      - name: Render Quarto
-        run: quarto render
+    - name: Commit and push rendered output
+      uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Render Quarto project
+        commit_user_name: github-actions
+        commit_user_email: github-actions@github.com
