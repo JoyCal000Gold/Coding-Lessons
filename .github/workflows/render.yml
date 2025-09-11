@@ -15,14 +15,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Set up Quarto (with specific version)
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
         with:
           version: "1.4.550"
 
+      # Set up R and cache R packages
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
 
@@ -34,10 +37,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-r-packages-
 
+      # Install R packages with custom library path
       - name: Install R packages
+        env:
+          R_LIBS_USER: ${{ github.workspace }}/.R/library
         run: |
           Rscript -e '.libPaths(Sys.getenv("R_LIBS_USER")); install.packages(c("knitr", "rmarkdown", "reticulate"), repos="https://cloud.r-project.org")'
 
+      # Set up Python (with version 3.10) and cache pip packages
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -51,10 +58,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-packages-
 
+      # Install specific versions of Python packages (to avoid surprises)
       - name: Install Python packages
         run: |
-          pip install numpy pandas scipy matplotlib
+          pip install numpy==1.23 pandas==1.5 scipy==1.9 matplotlib==3.6
 
+      # Render Quarto document (using custom R_LIBS_USER)
       - name: Render Quarto
         env:
           R_LIBS_USER: ${{ github.workspace }}/.R/library
