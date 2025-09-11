@@ -106,11 +106,19 @@ In a web app, this could be implemented with Flask or Streamlit, where each page
 * Webpage Reports: Report in R markdown, pdf, html (R (Shiny) and Quarto)
 # **NEXT LESSION IDEAS**
 
-use R experiemntal design tool
+Use R experiemntal design tool
+
 Explore variables and memory, garbage disposal, and ownership
+
 Object Orientated Programs in R, Python, Rust
+
 Stacks, Heaps,and other data structures
+
 Function declarations & Help functions for each program
+
+Global vs local enivorments and more about IDEs
+
+What are domain-specific language and how do they help
 
 ## *GOALS of Lessons*
 📚 Core Topics to Introduce
