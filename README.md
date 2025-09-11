@@ -74,4 +74,8 @@
 2. **R takes care of the analysis**: Performs statistical analysis (like time series forecasting or experimental design), creates sophisticated visualizations, and generates reports.
 3. **R or Python handles interactivity**: Use Python for interactive UI elements like buttons, filters, or sliders, or use **Shiny** in R for more advanced interactive visualizations or reports.
 
-### Would you like to see a **basic example** of how Python and R can work together for a simple interactive analysis? Or perhaps a deeper dive into **RMarkdown** for report generation?
+#Lesson Plan
+Webpage one (homepage) : Password protection
+Webpage Data : API, static datasets. Modifying and filtering data, python user interface systems
+Webpage Analytics : Python regression, R regression, R timeseries. R graphs and python graphics
+Webpage Reports: Report in R markdown, pdf, html (R and Quarto), use R experiemntal design tool if time?
