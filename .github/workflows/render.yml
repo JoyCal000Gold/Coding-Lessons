@@ -6,77 +6,35 @@ on:
       - ".github/workflows/render.yml"
       - "quarto.yml"
 
-env:
-  R_LIBS_USER: ${{ github.workspace }}/.R/library
-
 jobs:
   render:
     runs-on: ubuntu-latest
     steps:
-      # Checkout the repository
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       
-      # Set up Quarto (with specific version)
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        with:
-          version: "1.4.550"
+        # Remove version to get latest stable
       
-      # Set up R and cache R packages
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
-      
-      - name: Cache R packages
-        uses: actions/cache@v3
         with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-packages-v1
-          restore-keys: |
-            ${{ runner.os }}-r-packages-
+          use-public-rspm: true
       
-      # Install R packages with custom library path
       - name: Install R packages
         run: |
-          echo "Setting R_LIBS_USER to: ${{ env.R_LIBS_USER }}"
-          mkdir -p "${{ env.R_LIBS_USER }}"
-          Rscript -e "
-            # Set the custom library path
-            lib_path <- '${{ env.R_LIBS_USER }}'
-            dir.create(lib_path, recursive = TRUE, showWarnings = FALSE)
-            .libPaths(lib_path)
-            
-            # Verify the library path is set correctly
-            cat('Library paths:', .libPaths(), '\n')
-            
-            # Install packages to the custom path
-            install.packages(c('knitr', 'rmarkdown', 'reticulate'), 
-                           repos = 'https://cloud.r-project.org',
-                           lib = lib_path)
-            "
+          sudo Rscript -e "install.packages(c('knitr', 'rmarkdown', 'reticulate'), repos='https://cloud.r-project.org')"
       
-      # Set up Python (with version 3.10) and cache pip packages
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
       
-      - name: Cache pip
-        uses: actions/cache@v3
-        with:
-          path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-packages-v1
-          restore-keys: |
-            ${{ runner.os }}-pip-packages-
-      
-      # Install the latest stable versions of Python packages
       - name: Install Python packages
         run: |
           pip install numpy pandas scipy matplotlib
       
-      # Render Quarto document
       - name: Render Quarto
         run: |
-          echo "Rendering Quarto document: Lesson-One.qmd"
-          export R_LIBS_USER="${{ env.R_LIBS_USER }}"
           quarto render Lesson-One.qmd
