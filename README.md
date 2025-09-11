@@ -102,4 +102,4 @@ In a web app, this could be implemented with Flask or Streamlit, where each page
 
 * Webpage Analytics : Python regression, R regression, R timeseries. R graphs and python graphics
 
-* Webpage Reports: Report in R markdown, pdf, html (R and Quarto), use R experiemntal design tool if time?
+* Webpage Reports: Report in R markdown, pdf, html (R (Shiny) and Quarto), use R experiemntal design tool if time?
