@@ -59,13 +59,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-packages-
 
-      # Install specific versions of Python packages (to avoid surprises)
+      # Install the latest stable versions of Python packages
       - name: Install Python packages
         run: |
-          pip install numpy==1.23 pandas==1.5 scipy==1.9 matplotlib==3.6
+          pip install numpy pandas scipy matplotlib
 
       # Render Quarto document (using custom R_LIBS_USER)
       - name: Render Quarto
         env:
           R_LIBS_USER: ${{ github.workspace }}/.R/library
-        run: quarto render Lesson-One.qmd
+        run: |
+          echo "Rendering Quarto document: Lesson-One.qmd"
+          quarto render Lesson-One.qmd
