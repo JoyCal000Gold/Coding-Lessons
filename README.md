@@ -1,6 +1,4 @@
-# Coding-LessonsExactly! Here's a summary of how the different tools fit into your three-page setup (analytics, reports, and general functionality) based on your requirements:
-
----
+# Coding-Lessons
 
 ### **1. Analytics Tab: Data Handling, Cleaning, and Graphs**
 
