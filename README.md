@@ -289,3 +289,192 @@ Explore a NoSQL alternative (MongoDB, Redis) and compare use cases.
 Profile code (cProfile in Python; profvis in R) to find bottlenecks.
 
 Apply simple optimizations: caching, vectorized operations, or compiled extensions.
+
+## Advanced topics
+Version Control & Collaboration
+
+Git basics (init, add/commit, branch, merge)
+
+Workflows (feature branches, pull requests)
+
+Testing & Quality Assurance
+
+Unit testing with pytest (Python) or testthat (R)
+
+Test-Driven Development (TDD) cycle: write a failing test → implement → refactor
+
+Code Style & Documentation
+
+Linters/formatters (Black, Flake8, lintr)
+
+Docstrings and auto-generated API docs (Sphinx, roxygen2)
+
+File I/O & Data Serialization
+
+Reading/writing CSV, JSON, plain text files
+
+Serializing objects (JSON vs pickle/YAML vs feather)
+
+Algorithms & Problem Solving
+
+Simple sorting/searching algorithms (bubble, quicksort; linear, binary search)
+
+Big O notation for basic operations
+
+Functional Programming Patterns
+
+map/filter/reduce and list comprehensions
+
+Lambdas and higher-order functions
+
+Recursion & Advanced Control Flow
+
+Recursive functions (factorial, tree traversal)
+
+When to choose recursion vs loops
+
+Asynchronous Programming
+
+async/await in Python; futures/promises in R
+
+Simple I/O-bound example (fetching multiple URLs concurrently)
+
+Regular Expressions & Text Processing
+
+Regex essentials (^, $, quantifiers, groups)
+
+Validating or extracting patterns from strings
+
+Logging, Error Handling & Monitoring
+
+Structured logging instead of prints (Python’s logging; R’s futile.logger)
+
+Graceful error handling and alerts
+
+Command-Line Interfaces & Argument Parsing
+
+Building CLIs with argparse (Python) or optparse (R)
+
+Packaging scripts to accept flags/options
+
+Profiling & Performance Tuning
+
+Profiling tools (cProfile in Python; profvis in R)
+
+Identifying bottlenecks and simple optimizations
+
+Security Fundamentals (Beyond Input Validation)
+
+Hashing and salting passwords (bcrypt, hashlib)
+
+Basics of encryption and secret management
+
+Advanced Database Topics
+
+Joins, transactions, indexing in SQL
+
+Introduction to a NoSQL store (MongoDB, Redis)
+
+## Abstract Topics
+
+1. Programming Paradigms
+Imperative vs Declarative
+
+Object-Oriented vs Functional vs Procedural
+
+Event-Driven & Reactive
+
+2. Abstraction & Encapsulation
+Hiding implementation details behind well-defined interfaces
+
+Layering: presentation, business logic, data access
+
+APIs and service boundaries
+
+3. Separation of Concerns
+Modular design: grouping related functionality
+
+Coupling (how modules depend on each other)
+
+Cohesion (how focused each module is)
+
+4. Type Systems & Safety
+Static vs Dynamic typing
+
+Strong vs Weak typing
+
+Type inference and generics/templates
+
+Algebraic data types and pattern matching
+
+5. Error Handling Models
+Exceptions vs Error codes/values
+
+Try-catch/finally patterns
+
+Result or Either types for explicit success/failure
+
+6. Concurrency & Parallelism
+Threads, processes, and the OS scheduler
+
+Asynchronous I/O and event loops
+
+Message-passing (Actor model, CSP)
+
+Race conditions, deadlocks, and locks
+
+7. Software Architecture Patterns
+MVC, MVVM, and Clean Architecture
+
+Monolithic vs Microservices vs Serverless
+
+Pub/Sub and event-driven architectures
+
+8. Design Patterns
+Creational (Factory, Singleton)
+
+Structural (Adapter, Proxy)
+
+Behavioral (Observer, Strategy)
+
+9. Immutability & Pure Functions
+Referential transparency and no side effects
+
+Benefits for concurrency and testing
+
+Immutable data structures vs in-place mutation
+
+10. Declarative vs Imperative Styles
+SQL’s “what” vs procedural loop’s “how”
+
+CSS as declarative styling
+
+DSLs (Domain-Specific Languages) for configuration
+
+11. Metaprogramming & Reflection
+Code that generates or modifies code at runtime
+
+Annotations, decorators, macros
+
+Trade-offs: flexibility versus complexity
+
+12. Dependency Management & Inversion of Control
+Injecting dependencies instead of hard-coding them
+
+Service locators and IoC containers
+
+Benefits for testing and extending systems
+
+13. Lazy vs Eager Evaluation
+Deferring computation until needed (generators, promises)
+
+Strict evaluation for predictability
+
+Memory and performance implications
+
+14. Data Flow vs Control Flow
+Pipelines and functional chains (map → filter → reduce)
+
+Stream processing and backpressure
+
+Reactive extensions (RxJS, ReactiveX)
