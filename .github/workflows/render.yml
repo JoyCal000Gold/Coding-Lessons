@@ -15,7 +15,6 @@ jobs:
       
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
-        # Remove version to get latest stable
       
       - name: Setup R
         uses: r-lib/actions/setup-r@v2
