@@ -37,12 +37,15 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-r-packages-
 
-      # Install R packages with custom library path
+      # Install R packages with custom library path (ensuring it's writable)
       - name: Install R packages
         env:
           R_LIBS_USER: ${{ github.workspace }}/.R/library
         run: |
           echo "Setting R_LIBS_USER to: $R_LIBS_USER"
+          # Create the custom library path if it doesn't exist
+          mkdir -p $R_LIBS_USER
+          # Install the R packages (ensure correct path)
           Rscript -e 'Sys.setenv(R_LIBS_USER="${R_LIBS_USER}"); .libPaths(Sys.getenv("R_LIBS_USER")); install.packages(c("knitr", "rmarkdown", "reticulate"), repos="https://cloud.r-project.org")'
 
       # Set up Python (with version 3.10) and cache pip packages
