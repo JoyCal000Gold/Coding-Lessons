@@ -54,5 +54,6 @@ jobs:
       - name: Install Python packages
         run: pip install numpy
 
-      - name: Render Quarto
-        run: quarto render
+       - name: Render Quarto
+         run: quarto render Lesson-One.qmd
+
