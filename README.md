@@ -120,6 +120,54 @@ Global vs local enivorments and more about IDEs
 
 What are domain-specific language and how do they help
 
+Lesson 3: Quick Checks for System Architecture Fundamentals
+This single lesson introduces core system concepts and gives students simple techniques to verify behavior in their own code. Each section includes a quick “check” they can apply immediately without extensive examples.
+
+1. Execution Flow & Debugging
+Help students see what the interpreter or compiler is doing.
+
+Explain how a call stack works and why errors show a trace
+
+Show how to run the code with a debugger or add simple print statements
+
+Check: run the script and read the stack trace to pinpoint the failing function
+
+2. State & Side Effects
+Teach learners to spot hidden mutations and global state issues.
+
+Contrast mutable vs immutable types and local vs global variables
+
+Introduce the concept of pure functions (no side effects)
+
+Check: insert a log before and after a function call to see if inputs change
+
+3. Modules, Environments & Dependencies
+Give a lightweight overview of organizing code and isolating projects.
+
+Describe how imports bring external code into a script
+
+Show how to create and activate a virtual environment or R renv
+
+Check: run pip freeze (or renv::status()) to confirm only expected packages are installed
+
+4. Performance & Lazy Evaluation
+Point out common operations that hide cost and when to defer computation.
+
+Compare list lookup (O(n)) vs dict lookup (O(1)) in plain terms
+
+Introduce generators for on-demand data processing
+
+Check: measure runtime of a loop vs generator with a simple timing function
+
+5. Security & Stability
+Highlight basic defenses against common pitfalls.
+
+Outline input validation, injection risks, and race conditions
+
+Show how to wrap critical code in try/except or equivalent error handling
+
+Check: feed unexpected input (e.g., empty strings, negative numbers) and observe if the code fails safely
+
 ## *GOALS of Lessons*
 📚 Core Topics to Introduce
 
