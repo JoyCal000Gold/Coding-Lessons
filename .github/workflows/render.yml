@@ -42,6 +42,7 @@ jobs:
         env:
           R_LIBS_USER: ${{ github.workspace }}/.R/library
         run: |
+          echo "Setting R_LIBS_USER to: $R_LIBS_USER"
           Rscript -e 'Sys.setenv(R_LIBS_USER="${R_LIBS_USER}"); .libPaths(Sys.getenv("R_LIBS_USER")); install.packages(c("knitr", "rmarkdown", "reticulate"), repos="https://cloud.r-project.org")'
 
       # Set up Python (with version 3.10) and cache pip packages
@@ -61,4 +62,10 @@ jobs:
       # Install specific versions of Python packages (to avoid surprises)
       - name: Install Python packages
         run: |
-          pip install numpy==1.23 pandas==1.5 scipy==1.9 matp
+          pip install numpy==1.23 pandas==1.5 scipy==1.9 matplotlib==3.6
+
+      # Render Quarto document (using custom R_LIBS_USER)
+      - name: Render Quarto
+        env:
+          R_LIBS_USER: ${{ github.workspace }}/.R/library
+        run: quarto render Lesson-One.qmd
