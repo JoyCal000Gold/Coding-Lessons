@@ -1,4 +1,5 @@
 name: Render Quarto Document
+
 on:
   push:
     paths:
@@ -9,6 +10,7 @@ on:
 jobs:
   render:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -21,6 +23,17 @@ jobs:
         with:
           use-public-rspm: true
       
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libpng-dev libjpeg-dev libtiff-dev \
+            libgl1-mesa-dev libglu1-mesa-dev \
+            libfontconfig1-dev libcurl4-openssl-dev libssl-dev libxml2-dev \
+            python3-dev build-essential \
+            libfreetype6-dev pkg-config \
+            libopenblas-dev liblapack-dev gfortran
+      
       - name: Install R packages
         run: |
           Rscript -e "
@@ -29,15 +42,12 @@ jobs:
                            dependencies = TRUE)
             
             # Verify packages are installed
-            cat('Checking installed packages:\n')
             for (pkg in c('knitr', 'rmarkdown', 'reticulate')) {
-              if (require(pkg, character.only = TRUE, quietly = TRUE)) {
-                cat(pkg, 'is installed and loadable\n')
-              } else {
-                cat('ERROR:', pkg, 'failed to install or load\n')
-                quit(status = 1)
+              if (!require(pkg, character.only = TRUE, quietly = TRUE)) {
+                stop('Package ', pkg, ' failed to install')
               }
             }
+            cat('All R packages installed successfully\n')
           "
       
       - name: Setup Python
