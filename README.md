@@ -203,3 +203,89 @@ Lazy evaluation and generators
 Input validation and injection risks
 
 Race conditions and concurrency issues
+
+## Other 💡 
+Version Control & Collaboration
+Learn Git basics: init, clone, commit, branch, merge.
+
+Understand workflows (feature branches, pull requests) to collaborate safely.
+
+2. Testing & Quality Assurance
+Write simple unit tests with pytest (Python) or testthat (R).
+
+Practice Test-Driven Development (TDD): write a failing test, then code to pass it.
+
+3. Code Style & Documentation
+Adopt linters and formatters (Black, Flake8, lintr).
+
+Document functions with docstrings and generate API docs (Sphinx, roxygen2).
+
+4. Input/Output & File Management
+Read/write files: CSV, JSON, plain text.
+
+Handle errors (missing files, permission issues) with try/except or tryCatch.
+
+5. Data Serialization & Formats
+Serialize objects with JSON, YAML, or pickle.
+
+Understand when to choose text (JSON/YAML) vs binary (pickle/feather).
+
+6. Algorithms & Problem Solving
+Implement and compare simple algorithms: sorting (bubble, quick), searching (linear, binary).
+
+Analyze basic Big O notation to reason about efficiency.
+
+7. Networking & Web Basics
+Make HTTP requests (requests library in Python, httr in R).
+
+Parse JSON responses and handle common HTTP status codes.
+
+8. Functional Programming Concepts
+Use map/filter/reduce for concise data transformations.
+
+Explore anonymous functions (lambdas) and higher-order functions.
+
+9. Object-Oriented Programming Intro
+Define classes with attributes and methods.
+
+Understand inheritance and when to use composition instead.
+
+10. Recursion & Advanced Control Flow
+Write recursive functions for tasks like factorial or tree traversal.
+
+Learn when recursion is more elegant or when loops are more efficient.
+
+11. Concurrency & Asynchronous Programming
+Explore threading vs. multiprocessing in Python or future/promises in R.
+
+Write a simple async I/O task (e.g., fetching multiple URLs concurrently).
+
+12. Regular Expressions & Text Processing
+Master regex basics (^, $, quantifiers, groups) for pattern matching.
+
+Use them to validate input or extract data from logs, CSVs, or text files.
+
+13. Logging, Error Handling & Monitoring
+Integrate a logging framework instead of prints (logging in Python; futile.logger in R).
+
+Structure try/except blocks for graceful failure and clear error messages.
+
+14. Command-Line Interfaces & Argument Parsing
+Build simple CLI tools with argparse (Python) or optparse (R).
+
+Package scripts to accept flags and options for flexible usage.
+
+15. Security Fundamentals
+Hash and salt passwords (bcrypt, hashlib).
+
+Understand encryption basics and secure storage of secrets.
+
+16. Databases & Data Persistence
+Deepen SQL skills: joins, subqueries, transactions, indexing.
+
+Explore a NoSQL alternative (MongoDB, Redis) and compare use cases.
+
+17. Profiling & Performance Tuning
+Profile code (cProfile in Python; profvis in R) to find bottlenecks.
+
+Apply simple optimizations: caching, vectorized operations, or compiled extensions.
