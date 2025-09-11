@@ -89,10 +89,11 @@ Implement a for loop to navigate between pages (e.g., buttons to switch between 
 
 What to cover:
 
- ** Password Protection:
+* ** Password Protection:
 
 Start with a password prompt (simple if/else). The user must input a password to access the next page.  
- ** For Loop for Navigation:
+
+* ** For Loop for Navigation:
 
 Use a for loop to create buttons for moving between pages.
 In a web app, this could be implemented with Flask or Streamlit, where each page links to another. The user can click a button to move to the next page.
