@@ -23,7 +23,22 @@ jobs:
       
       - name: Install R packages
         run: |
-          sudo Rscript -e "install.packages(c('knitr', 'rmarkdown', 'reticulate'), repos='https://cloud.r-project.org')"
+          Rscript -e "
+            install.packages(c('knitr', 'rmarkdown', 'reticulate'), 
+                           repos = 'https://cloud.r-project.org',
+                           dependencies = TRUE)
+            
+            # Verify packages are installed
+            cat('Checking installed packages:\n')
+            for (pkg in c('knitr', 'rmarkdown', 'reticulate')) {
+              if (require(pkg, character.only = TRUE, quietly = TRUE)) {
+                cat(pkg, 'is installed and loadable\n')
+              } else {
+                cat('ERROR:', pkg, 'failed to install or load\n')
+                quit(status = 1)
+              }
+            }
+          "
       
       - name: Setup Python
         uses: actions/setup-python@v4
