@@ -52,7 +52,8 @@ jobs:
             ${{ runner.os }}-pip-packages-
 
       - name: Install Python packages
-        run: pip install numpy
+        run: |
+          pip install numpy pandas scipy matplotlib
 
       - name: Render Quarto
         env:
