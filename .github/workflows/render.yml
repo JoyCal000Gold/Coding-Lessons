@@ -36,7 +36,7 @@ jobs:
 
       - name: Install R packages
         run: |
-          Rscript -e 'install.packages(c("knitr", "rmarkdown", "reticulate"), repos="https://cloud.r-project.org")'
+          Rscript -e '.libPaths(Sys.getenv("R_LIBS_USER")); install.packages(c("knitr", "rmarkdown", "reticulate"), repos="https://cloud.r-project.org")'
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -55,4 +55,6 @@ jobs:
         run: pip install numpy
 
       - name: Render Quarto
+        env:
+          R_LIBS_USER: ${{ github.workspace }}/.R/library
         run: quarto render Lesson-One.qmd
