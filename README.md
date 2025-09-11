@@ -114,6 +114,7 @@ Function declarations & Help functions for each program
 
 ## *GOALS of Lessons*
 📚 Core Topics to Introduce
+
 🔍 1. Code Execution Flow
 How interpreters and compilers process code
 
