@@ -1,18 +1,17 @@
 # Lesson Plan: Programming Concepts & Analytics Web App
 
-## Webpage One (Homepage): Password Protection
-
-**Objective:**  
-Teach basic programming concepts such as if/else, data types, and for loops.
-
-**Secondary Objectives:**
-Build a strong conceptual foundation by classifying programming languages and understanding their core design goals and use cases. So,
-before jumping into syntax, it helps students understand why languages exist, their strengths and weaknesses, and which to pick for different tasks.
+**Lesson Objectives:**
+Build a strong conceptual foundation by classifying programming languages and understanding their core design goals and use cases. So, before jumping into syntax, it helps students understand why languages exist, their strengths and weaknesses, and which to pick for different tasks.
 
 ### Learning Goals
 - Learn conditional statements (if/else)
 - Understand data types (strings, integers, booleans)
 - Implement a for loop for navigation (e.g., buttons to switch between sections/pages)
+
+## Webpage One (Homepage): Password Protection
+
+**Objective:**  
+Teach basic programming concepts such as if/else, data types, and for loops.
 
 ### What to Cover
 
