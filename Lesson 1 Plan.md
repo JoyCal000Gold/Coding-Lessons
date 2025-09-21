@@ -22,8 +22,8 @@ before jumping into syntax, it helps students understand why languages exist, th
 
 #### **For Loop for Navigation**
 - Use a for loop to dynamically create navigation buttons.
-- In a web app (e.g., Flask or Streamlit), each button links to a different section/page.
-- The user can click a button to move to the next page.
+- Each button links to a different section/page or process.
+- The user can click a button to move to the next page, section, or to active a process.
 
 ---
 
@@ -289,17 +289,6 @@ before jumping into syntax, it helps students understand why languages exist, th
    b. Data Visualization
    c. Research Reports
    d. Time Series Analysis
-
-3. **C++**
-   a. System Software
-   b. Game Development
-   c. Performance-Critical Applications
-
-4. **Rust**
-   a. System Programming
-   b. Web Assembly
-   c. Blockchain
-   d. Safe Concurrent Programming
 
 ## VI. Programming Paradigms
 
