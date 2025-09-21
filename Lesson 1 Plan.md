@@ -32,7 +32,7 @@ Teach basic programming concepts such as functions, data types, variables, and o
 - Advanced Data Concepts (Study Ahead): Cross-language data serialization
 - Memory Fundamentals (Study Ahead): How data moves between language runtimes
 
-### WHaat to Cover
+### What to Cover
 - Working with APIs and static datasets.
 - Modifying and filtering data.
 - Introduction to Python user interface systems.
