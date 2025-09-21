@@ -43,7 +43,7 @@ Teach basic programming concepts such as functions, data types, variables, and o
 
 ## Webpage: Analytics
 
-** Objectives:**
+**Objectives:**
 - Leverage R's statistical computing strengths for analysis
 - Demonstrate language-specific optimization for different tasks
 - Memory Management (Study Ahead): How Quarto manages multi-language memory
