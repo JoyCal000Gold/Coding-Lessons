@@ -1,5 +1,7 @@
 # Lesson Plan: Programming Concepts & Analytics Web App
 
+Built with Quarto (R Markdown) + Python + C++/Rust Extensions
+
 **Lesson Objectives:**
 Build a strong conceptual foundation by classifying programming languages and understanding their core design goals and use cases. So, before jumping into syntax, it helps students understand why languages exist, their strengths and weaknesses, and which to pick for different tasks.
 
@@ -7,45 +9,63 @@ Build a strong conceptual foundation by classifying programming languages and un
 - Learn conditional statements (if/else)
 - Understand data types (strings, integers, booleans)
 - Implement a for loop for navigation (e.g., buttons to switch between sections/pages)
+- Compare language paradigms and execution models through direct usage
+- Use built-in functions for input/output and data manipulation
+- See how R Markdown integrates with Python, C++, and Rust code chunks
 
 ## Webpage One (Homepage): Password Protection
 
 **Objective:**  
-Teach basic programming concepts such as if/else, data types, and for loops.
+Teach basic programming concepts such as functions, data types, variables, and operators.
 
 ### What to Cover
 
-#### **Password Protection**
 - Start with a password prompt using a simple if/else statement.
 - The user must input a password to access the next page or section.
-
-#### **For Loop for Navigation**
-- Use a for loop to dynamically create navigation buttons.
-- Each button links to a different section/page or process.
-- The user can click a button to move to the next page, section, or to active a process.
 
 ---
 
 ## Webpage: Data
 
+**Objectives:**
+- Composite Data Types (Core): JSON (Python) to data.frame (R) conversion
+- Advanced Data Concepts (Study Ahead): Cross-language data serialization
+- Memory Fundamentals (Study Ahead): How data moves between language runtimes
+
+### WHaat to Cover
 - Working with APIs and static datasets.
 - Modifying and filtering data.
 - Introduction to Python user interface systems.
+- Use Python's API libraries while processing data in R
+- Show how to pass data between R and Python chunks in Quarto
 
 ---
 
 ## Webpage: Analytics
 
+** Objectives:**
+- Leverage R's statistical computing strengths for analysis
+- Demonstrate language-specific optimization for different tasks
+- Memory Management (Study Ahead): How Quarto manages multi-language memory
+
+
+#### What to Cover
 - Python regression analysis.
-- R regression and time series analysis.
+- R regression analysis.
 - Visualizations with R graphs and Python graphics.
 
 ---
 
 ## Webpage: Reports
 
+** Objectives:**
+Demonstrate advanced Quarto features for multi-language documents
+Show complete workflow from data acquisition to final report
+Preview advanced concepts available in each language ecosystem
+
+#### What to Cover
 - Reporting with R Markdown, PDF, HTML output.
-- Using R (Shiny) and Quarto for interactive and static reports.
+- Using R and Quarto for interactive and static reports.
 
 ### Resources for Further Learning
 
