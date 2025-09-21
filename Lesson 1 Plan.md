@@ -58,7 +58,7 @@ Teach basic programming concepts such as functions, data types, variables, and o
 
 ## Webpage: Reports
 
-** Objectives:**
+**Objectives:**
 Demonstrate advanced Quarto features for multi-language documents
 Show complete workflow from data acquisition to final report
 Preview advanced concepts available in each language ecosystem
