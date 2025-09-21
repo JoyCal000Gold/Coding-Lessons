@@ -89,7 +89,7 @@ Preview advanced concepts available in each language ecosystem
 - _Hands-On Programming with R_ by Garrett Grolemund
 #### Notes
 # Programming Concepts Taxonomy - Basic Lesson Scope
-*Core concepts for beginners, with advanced topics for further study*
+*Core concepts for beginners, with advanced topics for further study, Advanced topics, study ahead, are topics which will be covered with varying depths based on time and interest.*
 
 ## I. Foundational Elements
 
