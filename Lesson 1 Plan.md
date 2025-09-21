@@ -67,14 +67,13 @@ Preview advanced concepts available in each language ecosystem
 - Reporting with R Markdown, PDF, HTML output.
 - Using R and Quarto for interactive and static reports.
 
-### Resources for Further Learning
+### Resources for Further Learning (Not lesson specific)
 
 #### Websites
 - [Real Python](https://realpython.com/)
 - [Python Official Documentation](https://docs.python.org/3/)
 - [R for Data Science](https://r4ds.hadley.nz/)
 - [Shiny by RStudio](https://shiny.posit.co/)
-- [Quarto Documentation](https://quarto.org/docs/)
 
 #### YouTube Channels & Playlists
 - [Corey Schafer - Python Programming](https://www.youtube.com/user/schafer5)
@@ -82,11 +81,6 @@ Preview advanced concepts available in each language ecosystem
 - [StatQuest with Josh Starmer (R & Statistics)](https://www.youtube.com/c/joshstarmer)
 - [R Programming 101](https://www.youtube.com/playlist?list=PLqzoL9-eJTNBDdKgJgJzaQcY6OXmsXAHU)
 
-#### Books
-- _Python Crash Course_ by Eric Matthes
-- _Automate the Boring Stuff with Python_ by Al Sweigart
-- _R for Data Science_ by Hadley Wickham & Garrett Grolemund
-- _Hands-On Programming with R_ by Garrett Grolemund
 #### Notes
 # Programming Concepts Taxonomy - Basic Lesson Scope
 *Core concepts for beginners, with advanced topics for further study, Advanced topics, study ahead, are topics which will be covered with varying depths based on time and interest.*
