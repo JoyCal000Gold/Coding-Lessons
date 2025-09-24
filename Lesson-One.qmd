@@ -2,6 +2,7 @@
 title: "Lesson One"
 format: html
 #This is YAML comment, will not be rendered
+#Our shell (low-level control) is bash, and there things called shell scripts
 ---
 
 # Introduction
@@ -16,6 +17,22 @@ In this lesson, we explore the difference between **rendering** a document with 
 - Others (C++, Rust) require external compilation.
 
 ---
+
+```{r setup, include=FALSE}
+knitr::knit_engines$set(
+  cpp = function(options) {
+    code <- paste(options$code, collapse = "\n")
+    tmp_cpp <- tempfile(fileext = ".cpp")
+    tmp_bin <- tempfile()
+    writeLines(code, tmp_cpp)
+    # Compile the cpp code
+    system2("g++", c(tmp_cpp, "-o", tmp_bin))
+    # Run the binary and capture output
+    output <- system(tmp_bin, intern = TRUE)
+    knitr::engine_output(options, code, output)
+  }
+)
+```
 
 # Python chunk (automatically renders and compiles)
 ```{python}
@@ -47,7 +64,7 @@ print(y)
 
 <!-- Save your code to example.cpp Compile with: g++ -o example example.cpp Run with: ./example -->
 # C++ chunk 
-```{c++}
+```{cpp}
 #include <iostream>
 #include <vector>
 
@@ -74,7 +91,7 @@ int main() {
 use std::io::{self, Write};
 
 fn run_case(case: &str) {
-    println!("\n=== Running Case: '{}' ===", case);
+    println!("=== Running Case: '{}' ===", case);
 
     match case {
         "immutable" => {
@@ -86,9 +103,9 @@ fn run_case(case: &str) {
             let x = vec![1, 2, 3];
             let y = &x; // Immutable borrow of x
 
-            println!("✅ x: {:?}", x);      // OK
-            println!("✅ y (immutable borrow of x): {:?}", y); // OK
-        },
+            println!("✅ x: {:?}", x);           // OK
+            println!("✅ y (immutable borrow): {:?}", y); // OK
+        }
 
         "mutable_clone" => {
             println!("🔍 Description:");
@@ -103,7 +120,7 @@ fn run_case(case: &str) {
 
             println!("✅ x (original, unchanged): {:?}", x);  // OK
             println!("✅ y (mutated clone): {:?}", y);        // OK
-        },
+        }
 
         "mutable_move" => {
             println!("🔍 Description:");
@@ -115,12 +132,11 @@ fn run_case(case: &str) {
             let mut y = x; // Move occurs here
 
             y[0] = 99;
-            
+
             // println!("x: {:?}", x); // ❌ This would fail to compile
             println!("🚫 Note: Cannot access 'x' anymore because it was moved to 'y'.");
             println!("✅ y (after mutation): {:?}", y);
-
-        },
+        }
 
         "mutable_borrow" => {
             println!("🔍 Description:");
@@ -153,17 +169,11 @@ fn run_case(case: &str) {
 }
 
 fn main() {
-    let cases = [
-        "immutable",
-        "mutable_clone",
-        "mutable_move",
-        "mutable_borrow",
-    ];
+    let cases = ["immutable", "mutable_clone", "mutable_move", "mutable_borrow"];
 
     for case in cases.iter() {
         run_case(case);
     }
-
-    println!("👋 All cases have run. Exiting program.");
 }
-````
+
+```
