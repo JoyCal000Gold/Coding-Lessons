@@ -1,1 +1,28 @@
+---
+title: "Rust Test"
+output: html_document
+---
 
+```{r setup, include=FALSE}
+knitr::knit_engines$set(
+  rust = function(options) {
+    code <- paste(options$code, collapse = "\n")
+    tmp_rs <- tempfile(fileext = ".rs")
+    tmp_bin <- tempfile()
+    writeLines(code, tmp_rs)
+
+    compile_res <- system2("rustc", c(tmp_rs, "-o", tmp_bin), stdout = TRUE, stderr = TRUE)
+
+    if (length(compile_res) > 0) {
+      return(knitr::engine_output(options, code, compile_res))
+    }
+
+    output <- system(tmp_bin, intern = TRUE)
+
+    knitr::engine_output(options, code, output)
+  }
+)
+
+fn main() {
+  println!("Hello from Rust!");
+}
