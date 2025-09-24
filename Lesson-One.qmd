@@ -8,16 +8,162 @@ format: html
 
 This is a simple Quarto lesson with Python and R code chunks.<!-- This is a markdown comment, will not be rendered-->
 
-# Python chunk
+In this lesson, we explore the difference between **rendering** a document with embedded code and **compiling** code in compiled languages like C++ and Rust.
 
+- **Rendering** runs code chunks inside the document, capturing output (like Python, R).
+- **Compiling** means transforming source code into an executable binary, which is then run separately.
+- Some languages (Python, R) are interpreted and run seamlessly.
+- Others (C++, Rust) require external compilation.
+
+---
+
+# Python chunk (automatically renders and compiles)
 ```{python}
 # Python code example
 import numpy as np
+
 print("Hello from Python!")
 print(f"Random number: {np.random.rand()}")
+
+x = [1, 2, 3]
+y = x
+y[0] = 99
+print("x:", x)
+print("y:", y)
 ```
-# R chuck
+
+# R chunk (automatically renders and compiles)
 ```{r}
 print("Hello from R!")
 print(runif(1))
+
+x <- c(1, 2, 3)
+y <- x
+y[1] <- 99  # Change first element of y (indexing starts at 1 in R)
+
+print(x)
+print(y)
 ```
+
+<!-- Save your code to example.cpp Compile with: g++ -o example example.cpp Run with: ./example -->
+# C++ chunk 
+```{c++}
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::vector<int> x = {1, 2, 3};
+    std::vector<int> y = x;
+    y[0] = 99;
+
+    std::cout << "x: ";
+    for (int val : x) std::cout << val << " ";
+    std::cout << std::endl;
+
+    std::cout << "y: ";
+    for (int val : y) std::cout << val << " ";
+    std::cout << std::endl;
+
+    return 0;
+}
+```
+
+<!-- Save as example.rs Compile with: rustc example.rs Run with: ./example -->
+# Rust chunk 
+```{rust}
+use std::io::{self, Write};
+
+fn run_case(case: &str) {
+    println!("\n=== Running Case: '{}' ===", case);
+
+    match case {
+        "immutable" => {
+            println!("🔍 Description:");
+            println!("This case demonstrates an *immutable borrow* of a vector.");
+            println!("You can read from the original (x) and the reference (y), but not mutate either.");
+            println!("Since y is just borrowing x immutably, both can be used simultaneously.\n");
+
+            let x = vec![1, 2, 3];
+            let y = &x; // Immutable borrow of x
+
+            println!("✅ x: {:?}", x);      // OK
+            println!("✅ y (immutable borrow of x): {:?}", y); // OK
+        },
+
+        "mutable_clone" => {
+            println!("🔍 Description:");
+            println!("This case shows what happens when you *clone* a vector and mutate the clone.");
+            println!("Cloning makes a completely new copy in memory, so you can mutate the new one freely.");
+            println!("The original remains unchanged.\n");
+
+            let x = vec![1, 2, 3];
+            let mut y = x.clone(); // Deep copy
+
+            y[0] = 99;
+
+            println!("✅ x (original, unchanged): {:?}", x);  // OK
+            println!("✅ y (mutated clone): {:?}", y);        // OK
+        },
+
+        "mutable_move" => {
+            println!("🔍 Description:");
+            println!("This case shows what happens when you *move ownership* of a vector to a new variable.");
+            println!("Once x is moved to y, x is no longer valid. You can mutate y, but x is gone.");
+            println!("Trying to use x after the move would be a compile-time error.\n");
+
+            let x = vec![1, 2, 3];
+            let mut y = x; // Move occurs here
+
+            y[0] = 99;
+            
+            // println!("x: {:?}", x); // ❌ This would fail to compile
+            println!("🚫 Note: Cannot access 'x' anymore because it was moved to 'y'.");
+            println!("✅ y (after mutation): {:?}", y);
+
+        },
+
+        "mutable_borrow" => {
+            println!("🔍 Description:");
+            println!("This case demonstrates a *mutable borrow* of a vector.");
+            println!("While the mutable borrow (y) is active, you can't use the original (x).");
+            println!("After the borrow ends (i.e., the block closes), x can be used again.\n");
+
+            let mut x = vec![1, 2, 3];
+            {
+                let y = &mut x; // Mutable borrow starts
+
+                y[0] = 99;
+
+                println!("✅ y (mutable borrow, mutated inside scope): {:?}", y);
+            } // Mutable borrow ends here
+
+            println!("✅ x (after mutable borrow ends): {:?}", x); // OK now
+        }
+
+        _ => {
+            eprintln!("❌ Unknown case '{}'. Valid options are:", case);
+            println!("- immutable");
+            println!("- mutable_clone");
+            println!("- mutable_move");
+            println!("- mutable_borrow");
+        }
+    }
+
+    println!("==============================\n");
+}
+
+fn main() {
+    let cases = [
+        "immutable",
+        "mutable_clone",
+        "mutable_move",
+        "mutable_borrow",
+    ];
+
+    for case in cases.iter() {
+        run_case(case);
+    }
+
+    println!("👋 All cases have run. Exiting program.");
+}
+````
