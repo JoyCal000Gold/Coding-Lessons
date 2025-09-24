@@ -8,8 +8,8 @@ echo 'R_LIBS_USER="~/Rlibs"' >> ~/.Renviron
 # 3. Export environment variable for current session
 export R_LIBS_USER=~/Rlibs
 
-# 4. Install required R packages (knitr and rmarkdown) in user directory
-R -e 'install.packages(c("knitr", "rmarkdown"), repos="https://cloud.r-project.org", lib="~/Rlibs")'
+# 4. Install required R packages (knitr, rmarkdown, reticulate) in user directory
+R -e 'install.packages(c("knitr", "rmarkdown", "reticulate"), repos="https://cloud.r-project.org", lib="~/Rlibs")'
 
 # 5. Confirm R sees your user library path
 R -e '.libPaths()'
@@ -19,3 +19,4 @@ quarto render Lesson-One.qmd
 
 # 7. (Optional) Preview the rendered HTML file in Codespaces
 # Right-click Lesson-One.html in Explorer and select "Open with Preview"
+
