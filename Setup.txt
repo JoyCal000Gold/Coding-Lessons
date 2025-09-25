@@ -18,41 +18,50 @@ chmod u+rwx ~/Rlibs
 # 6. Set R to use this directory for packages permanently
 echo 'R_LIBS_USER="/home/codespace/Rlibs"' >> ~/.Renviron
 
-# 7. In R, reload .Renviron
+# 7. Open R
+R
+
+# 8. readRenviron("~/.Renviron")
+Sys.getenv("R_LIBS_USER")
+.libPaths()
+
+# 9. In R, reload .Renviron
 readRenviron("~/.Renviron")
 
-# 8. Check the variable
+# 10. Verify of .Reviron is sourced
 Sys.getenv("R_LIBS_USER")
 .libPaths()
 
-# . Verify of .Reviron is sourced
-Sys.getenv("R_LIBS_USER")
-.libPaths()
+# 11. Quit R
+q()
 
-# Make sure my user library appears first in .libPaths()
+# 12. Make sure my user library appears first in .libPaths()
 mkdir -p ~/Rlibs
 chmod u+rwx ~/Rlibs
 
 echo "R_LIBS_USER=\"$HOME/Rlibs\"" >> ~/.Renviron
 export R_LIBS_USER="$HOME/Rlibs"
 
-R -e 'install.packages(c("knitr", "rmarkdown", "xfun"), repos="https://cloud.r-project.org", lib=Sys.getenv("R_LIBS_USER"))'
+# 13. Install required R packages (knitr, rmarkdown, reticulate, xfun) in user directory
+R -e 'install.packages(c("knitr", "rmarkdown", "xfun", "rmarkdown"), repos="https://cloud.r-project.org", lib=Sys.getenv("R_LIBS_USER"))'
 
+# 14. Confirm R sees your user library path and that the terminal bash works with R
 R -e '.libPaths()'
 
-quarto render Lesson-One.qmd
+# . nstall Rust via rustup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
-# 3. Export environment variable for current session
-export R_LIBS_USER=~/Rlibs
+# Press Enter
 
-# 4. Install required R packages (knitr, rmarkdown, reticulate) in user directory
-R -e 'install.packages(c("knitr", "rmarkdown", "reticulate"), repos="https://cloud.r-project.org", lib="~/Rlibs")'
+# Source your environment to update PATH
+source $HOME/.cargo/env
 
-# 5. Confirm R sees your user library path
-R -e '.libPaths()'
+# Check installation
+rustc --version
+cargo --version
 
 # 6. Render your Quarto file
-quarto render Lesson-One.qmd
+quarto render "Lesson-One.qmd"
 
 # 7. (Optional) Preview the rendered HTML file in Codespaces
 # Right-click Lesson-One.html in Explorer and select "Open with Preview"
