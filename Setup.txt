@@ -1,5 +1,6 @@
 Please Continue Working in GitHub Codespaces once you access the terminal through clicking the 3 bars at the top left corner.
 
+Once you clikc, make sure the click the 16 MB option.
 # 1. Install Quarto inside your Codespace terminal temporarily (it will disappear when the Codespace stops unless you add it to your devcontainer)
 wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.313/quarto-1.3.313-linux-amd64.deb
 sudo dpkg -i quarto-1.3.313-linux-amd64.deb
