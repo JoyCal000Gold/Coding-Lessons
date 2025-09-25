@@ -19,16 +19,40 @@ In this lesson, we explore the difference between **rendering** a document with 
 ---
 
 ```{r setup, include=FALSE}
+
 knitr::knit_engines$set(
+  rust = function(options) {
+    code <- paste(options$code, collapse = "\n")
+    tmp_rs <- tempfile(fileext = ".rs")
+    tmp_bin <- tempfile()
+    writeLines(code, tmp_rs)
+
+    compile_res <- system2("rustc", c(tmp_rs, "-o", tmp_bin), stdout = TRUE, stderr = TRUE)
+
+    if (length(compile_res) > 0) {
+      return(knitr::engine_output(options, code, compile_res))
+    }
+
+    output <- system(tmp_bin, intern = TRUE)
+
+    knitr::engine_output(options, code, output)
+  },
+  
   cpp = function(options) {
     code <- paste(options$code, collapse = "\n")
     tmp_cpp <- tempfile(fileext = ".cpp")
     tmp_bin <- tempfile()
     writeLines(code, tmp_cpp)
-    # Compile the cpp code
-    system2("g++", c(tmp_cpp, "-o", tmp_bin))
-    # Run the binary and capture output
+
+    # Compile C++ code using g++
+    compile_res <- system2("g++", c(tmp_cpp, "-o", tmp_bin), stdout = TRUE, stderr = TRUE)
+
+    if (length(compile_res) > 0) {
+      return(knitr::engine_output(options, code, compile_res))
+    }
+
     output <- system(tmp_bin, intern = TRUE)
+
     knitr::engine_output(options, code, output)
   }
 )
@@ -177,3 +201,4 @@ fn main() {
 }
 
 ```
+
