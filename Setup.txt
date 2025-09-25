@@ -11,12 +11,19 @@ sudo apt install -y r-base
 # 4. Check installation
 R --version
 
-# . Create directory for user-installed R packages
+# 5. Create directory for user-installed R packages
 mkdir -p ~/Rlibs
 chmod u+rwx ~/Rlibs
 
-# 2. Set R to use this directory for packages permanently
+# 6. Set R to use this directory for packages permanently
 echo 'R_LIBS_USER="/home/codespace/Rlibs"' >> ~/.Renviron
+
+# 7. In R, reload .Renviron
+readRenviron("~/.Renviron")
+
+# 8. Check the variable
+Sys.getenv("R_LIBS_USER")
+.libPaths()
 
 # . Verify of .Reviron is sourced
 Sys.getenv("R_LIBS_USER")
