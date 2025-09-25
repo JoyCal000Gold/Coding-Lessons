@@ -16,7 +16,7 @@ mkdir -p ~/Rlibs
 chmod u+rwx ~/Rlibs
 
 # 2. Set R to use this directory for packages permanently
-echo 'R_LIBS_USER="/home/yourusername/Rlibs"' >> ~/.Renviron
+echo 'R_LIBS_USER="/home/codespace/Rlibs"' >> ~/.Renviron
 
 # . Verify of .Reviron is sourced
 Sys.getenv("R_LIBS_USER")
