@@ -88,7 +88,6 @@ print(x)
 print(y)
 ```
 
-<!-- Save your code to example.cpp Compile with: g++ -o example example.cpp Run with: ./example -->
 # C++ chunk 
 ```{cpp}
 #include <iostream>
@@ -111,7 +110,6 @@ int main() {
 }
 ```
 
-<!-- Save as example.rs Compile with: rustc example.rs Run with: ./example -->
 # Rust chunks 
 
 ```{rust}
@@ -177,4 +175,5 @@ fn main() {
     run_case("mutable_clone");
 }
 ```
+
 
