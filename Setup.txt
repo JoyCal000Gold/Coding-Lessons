@@ -57,6 +57,11 @@ export R_LIBS_USER="$HOME/Rlibs"
 # 13. Install required R packages (knitr, rmarkdown, reticulate, xfun) in user directory
 R -e 'install.packages(c("knitr", "rmarkdown", "xfun", "rmarkdown", "reticulate"), repos="https://cloud.r-project.org", lib=Sys.getenv("R_LIBS_USER"))'
 
+sudo apt install -y libx11-dev libxt-dev
+sudo apt update
+sudo apt install -y libxt6
+
+
 # 14. Confirm R sees your user library path and that the terminal bash works with R
 R -e '.libPaths()'
 
