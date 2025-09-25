@@ -16,6 +16,8 @@ In this lesson, we explore the difference between **rendering** a document with 
 - Some languages (Python, R) are interpreted and run seamlessly.
 - Others (C++, Rust) require external compilation.
 
+The other objective is learning types of mutablity and how that affected by langauge syntx and language philosophy. 
+
 ---
 
 ```{r setup, include=FALSE}
@@ -175,3 +177,4 @@ fn main() {
     run_case("mutable_clone");
 }
 ```
+
