@@ -1,102 +1,78 @@
 Please Continue Working in GitHub Codespaces once you access the terminal through clicking the 3 bars at the top left corner.
 
-Once you clikc, make sure the click the 16 MB option.
-# 1. Install Quarto inside your Codespace terminal temporarily (it will disappear when the Codespace stops unless you add it to your devcontainer)
+# --- 1. Install Quarto temporarily (will disappear after Codespace shutdown) ---
 wget https://github.com/quarto-dev/quarto-cli/releases/download/v1.3.313/quarto-1.3.313-linux-amd64.deb
 sudo dpkg -i quarto-1.3.313-linux-amd64.deb
 
-# 2. Check installation
+# Check Quarto installation
 quarto --version
 
-# Download Miniconda installer
+# --- 2. Download and install Miniconda ---
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-
-# Run the installer
 bash Miniconda3-latest-Linux-x86_64.sh
 
-# Follow prompts to install Miniconda, then reload shell environment:
+# Follow installer prompts (accept license, choose install path, etc.)
+# After installation, reload your shell environment:
 source ~/.bashrc
 
-# Install R from conda-forge
-conda install -c conda-forge r-base
+# --- 3. Install R (version >= 4.4) and required R packages from conda-forge ---
+conda install -c conda-forge r-base=4.4 r-essentials r-reticulate r-matrix -y
 
-# 4. Check installation
+# Check R version
 R --version
 
-# 5. Create directory for user-installed R packages
+# --- 4. Set up user R package library directory ---
 mkdir -p ~/Rlibs
 chmod u+rwx ~/Rlibs
 
-# 6. Set R to use this directory for packages permanently
-echo 'R_LIBS_USER="/home/codespace/Rlibs"' >> ~/.Renviron
+# Add user library path permanently
+echo 'R_LIBS_USER="~/Rlibs"' >> ~/.Renviron
+source ~/.Renviron
 
-# 7. Open R
-R
+# --- 5. Verify R user library is set correctly ---
+R -e 'cat(Sys.getenv("R_LIBS_USER"), "\n"); .libPaths()'
 
-# 8. readRenviron("~/.Renviron")
-Sys.getenv("R_LIBS_USER")
-.libPaths()
+# --- 6. Install additional R packages in user library if needed ---
+R -e 'install.packages(c("knitr", "rmarkdown", "xfun"), repos="https://cloud.r-project.org", lib=Sys.getenv("R_LIBS_USER"))'
 
-# 9. In R, reload .Renviron
-readRenviron("~/.Renviron")
-
-# 10. Verify of .Reviron is sourced
-Sys.getenv("R_LIBS_USER")
-.libPaths()
-
-# 11. Quit R
-q()
-
-# 12. Make sure my user library appears first in .libPaths()
-mkdir -p ~/Rlibs
-chmod u+rwx ~/Rlibs
-
-echo "R_LIBS_USER=\"$HOME/Rlibs\"" >> ~/.Renviron
-export R_LIBS_USER="$HOME/Rlibs"
-
-# 13. Install required R packages (knitr, rmarkdown, reticulate, xfun) in user directory
-R -e 'install.packages(c("knitr", "rmarkdown", "xfun", "rmarkdown", "reticulate"), repos="https://cloud.r-project.org", lib=Sys.getenv("R_LIBS_USER"))'
-
-sudo apt install -y libx11-dev libxt-dev
+# --- 7. Install system dependencies for R graphics and X11 support ---
 sudo apt update
-sudo apt install -y libxt6
+sudo apt install -y libx11-dev libxt-dev libxt6 build-essential
 
-
-# 14. Confirm R sees your user library path and that the terminal bash works with R
-R -e '.libPaths()'
-
-# . nstall Rust via rustup
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# Press Enter
-
-# Source your environment to update PATH
+# --- 8. Install Rust via rustup ---
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source $HOME/.cargo/env
 
-# Check installation
+# Check Rust and Cargo versions
 rustc --version
 cargo --version
 
-# Install C++ compiler (g++)
-sudo apt update
-sudo apt install -y build-essential
+# --- 9. Install C++ compiler (g++) ---
+sudo apt install -y build-essential g++
 
-#Check Installment
+# Verify g++ installation
 g++ --version
 
-# Confirm both rustc and g++ are in Path
+# --- 10. Confirm rustc and g++ are on PATH ---
 which rustc
 which g++
 
-# Check Installation of Python
+# --- 11. Check Python installation ---
 python3 --version
 
-library(reticulate)
-use_python("/path/to/python", required = TRUE)
+# --- 12. (In R) Set Python path for reticulate ---
+# IMPORTANT: Run this inside R, not terminal
+# Replace /usr/bin/python3 with your python path from `which python3`
 
-# 6. Render your Quarto file
+echo '
+library(reticulate)
+use_python("/usr/bin/python3", required = TRUE)
+' > set_python.R
+
+Rscript set_python.R
+
+# --- 13. Render your Quarto document ---
 quarto render "Lesson-One.qmd"
 
-# 7. (Optional) Preview the rendered HTML file in Codespaces
+# --- 14. (Optional) Preview your HTML in Codespaces ---
 # Right-click Lesson-One.html in Explorer and select "Open with Preview"
-
