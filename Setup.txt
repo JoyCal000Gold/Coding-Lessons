@@ -91,6 +91,9 @@ which g++
 # Check Installation of Python
 python3 --version
 
+library(reticulate)
+use_python("/path/to/python", required = TRUE)
+
 # 6. Render your Quarto file
 quarto render "Lesson-One.qmd"
 
