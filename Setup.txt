@@ -76,6 +76,9 @@ echo '#include <iostream>\nint main() { std::cout << "Hello C++!" << std::endl; 
 g++ test.cpp -o testcpp
 ./testcpp
 
+# Check Installation of Python
+python3 --version
+
 # 6. Render your Quarto file
 quarto render "Lesson-One.qmd"
 
