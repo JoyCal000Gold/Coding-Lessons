@@ -110,10 +110,9 @@ int main() {
 ```
 
 <!-- Save as example.rs Compile with: rustc example.rs Run with: ./example -->
-# Rust chunk 
-```{rust}
-use std::io::{self, Write};
+# Rust chunks 
 
+```{rust}
 fn run_case(case: &str) {
     println!("=== Running Case: '{}' ===", case);
 
@@ -125,67 +124,14 @@ fn run_case(case: &str) {
             println!("Since y is just borrowing x immutably, both can be used simultaneously.\n");
 
             let x = vec![1, 2, 3];
-            let y = &x; // Immutable borrow of x
+            let y = &x;
 
-            println!("✅ x: {:?}", x);           // OK
-            println!("✅ y (immutable borrow): {:?}", y); // OK
-        }
-
-        "mutable_clone" => {
-            println!("🔍 Description:");
-            println!("This case shows what happens when you *clone* a vector and mutate the clone.");
-            println!("Cloning makes a completely new copy in memory, so you can mutate the new one freely.");
-            println!("The original remains unchanged.\n");
-
-            let x = vec![1, 2, 3];
-            let mut y = x.clone(); // Deep copy
-
-            y[0] = 99;
-
-            println!("✅ x (original, unchanged): {:?}", x);  // OK
-            println!("✅ y (mutated clone): {:?}", y);        // OK
-        }
-
-        "mutable_move" => {
-            println!("🔍 Description:");
-            println!("This case shows what happens when you *move ownership* of a vector to a new variable.");
-            println!("Once x is moved to y, x is no longer valid. You can mutate y, but x is gone.");
-            println!("Trying to use x after the move would be a compile-time error.\n");
-
-            let x = vec![1, 2, 3];
-            let mut y = x; // Move occurs here
-
-            y[0] = 99;
-
-            // println!("x: {:?}", x); // ❌ This would fail to compile
-            println!("🚫 Note: Cannot access 'x' anymore because it was moved to 'y'.");
-            println!("✅ y (after mutation): {:?}", y);
-        }
-
-        "mutable_borrow" => {
-            println!("🔍 Description:");
-            println!("This case demonstrates a *mutable borrow* of a vector.");
-            println!("While the mutable borrow (y) is active, you can't use the original (x).");
-            println!("After the borrow ends (i.e., the block closes), x can be used again.\n");
-
-            let mut x = vec![1, 2, 3];
-            {
-                let y = &mut x; // Mutable borrow starts
-
-                y[0] = 99;
-
-                println!("✅ y (mutable borrow, mutated inside scope): {:?}", y);
-            } // Mutable borrow ends here
-
-            println!("✅ x (after mutable borrow ends): {:?}", x); // OK now
+            println!("✅ x: {:?}", x);
+            println!("✅ y (immutable borrow): {:?}", y);
         }
 
         _ => {
-            eprintln!("❌ Unknown case '{}'. Valid options are:", case);
-            println!("- immutable");
-            println!("- mutable_clone");
-            println!("- mutable_move");
-            println!("- mutable_borrow");
+            eprintln!("❌ Unknown case '{}'", case);
         }
     }
 
@@ -193,12 +139,39 @@ fn run_case(case: &str) {
 }
 
 fn main() {
-    let cases = ["immutable", "mutable_clone", "mutable_move", "mutable_borrow"];
-
-    for case in cases.iter() {
-        run_case(case);
-    }
+    run_case("immutable");
 }
-
 ```
 
+```{rust}
+fn run_case(case: &str) {
+    println!("=== Running Case: '{}' ===", case);
+
+    match case {
+        "mutable_clone" => {
+            println!("🔍 Description:");
+            println!("This case shows what happens when you *clone* a vector and mutate the clone.");
+            println!("Cloning makes a completely new copy in memory, so you can mutate the new one freely.");
+            println!("The original remains unchanged.\n");
+
+            let x = vec![1, 2, 3];
+            let mut y = x.clone();
+
+            y[0] = 99;
+
+            println!("✅ x (original, unchanged): {:?}", x);
+            println!("✅ y (mutated clone): {:?}", y);
+        }
+
+        _ => {
+            eprintln!("❌ Unknown case '{}'", case);
+        }
+    }
+
+    println!("==============================\n");
+}
+
+fn main() {
+    run_case("mutable_clone");
+}
+```
