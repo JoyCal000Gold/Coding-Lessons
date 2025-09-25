@@ -13,7 +13,6 @@ sudo apt install -y --no-install-recommends software-properties-common dirmngr
 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 51716619E084DAB9
 sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
 sudo apt update
-sudo apt install -y r-base
 
 # 3. sudo apt update
 sudo apt install -y r-base
