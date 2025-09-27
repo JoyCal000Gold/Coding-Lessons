@@ -1,1 +1,25 @@
+{
+  "name": "Quarto Codespace Dev",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "quarto.quarto",
+        "ms-python.python",
+        "REditorSupport.r",
+        "ms-toolsai.jupyter",
+        "rust-lang.rust",
+        "ms-vscode.cpptools"
+      ]
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/install-deps.sh",
+  "workspaceFolder": "/workspace"
+}
 
