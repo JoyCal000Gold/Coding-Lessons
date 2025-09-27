@@ -1,1 +1,6 @@
 #pip
+pandas
+plotly
+ipython
+ipywidgets
+dash
