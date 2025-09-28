@@ -19,3 +19,7 @@ http://localhost:5000/
 
 
 and you will reach your Flask app running inside the container.
+
+If you want auto-reload during development, you can set app.run(debug=True) in your Flask script or run Flask via flask run with environment variables set.
+
+If your Flask app uses environment variables (like .env), make sure those files are mounted into the container (usually happens automatically with devcontainers).
