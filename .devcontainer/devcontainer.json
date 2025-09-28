@@ -12,7 +12,7 @@
     },
     "terminal.integrated.defaultProfile.linux": "bash"
   },
-  "postCreateCommand": "chmod +x /workspaces/Coding-Lessons/.devcontainer/check_versions.sh && /opt/conda/bin/conda init bash && echo 'conda info --envs | grep -q \"quarto-env\" && conda activate quarto-env' >> ~/.bashrc && echo 'cd /workspaces/Coding-Lessons && ./.devcontainer/check_versions.sh' >> ~/.bashrc",
+ "postCreateCommand": "chmod +x /workspaces/Coding-Lessons/.devcontainer/check_versions.sh && /opt/conda/bin/conda init bash && echo 'conda activate quarto-env && cd /workspaces/Coding-Lessons && ./.devcontainer/check_versions.sh' >> ~/.bashrc",
   "forwardPorts": [5000],
   "remoteUser": "vscode",
   "features": {
