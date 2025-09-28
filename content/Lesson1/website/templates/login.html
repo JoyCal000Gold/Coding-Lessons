@@ -12,6 +12,10 @@
   {% if error %}
     <p style="color:red;">{{ error }}</p>
   {% endif %}
+  {% if mode == 'random' or mode == 'secure' %}
+  <p><strong>Note:</strong> Check the server console output for the password to enter.</p>
+{% endif %}
+
 
   <hr>
   <p>Try other password types:</p>
