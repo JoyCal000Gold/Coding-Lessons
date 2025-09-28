@@ -4,19 +4,18 @@ This is a Quarto website protected by a password using Flask.
 
 ---
 
-## ✅ Steps to Run in Codespaces
+The terminal will open inside the container with the conda environment activated.
 
-1. Open the repo in GitHub Codespaces or VSCode Dev Container.
+Navigate to your Flask script folder (e.g., /workspaces/Coding-Lessons/content/Lesson1/website/scripts).
 
-2. Wait for the dev container to finish building (this sets up Python, R, Quarto, and your Conda environment).
+Run your Flask app inside the container:
 
-3. Open a terminal — you should see `(quarto-env)` activated automatically.
+python flask_server.py
 
-4. Run:
 
-```bash
-quarto render
-python scripts/flask_server.py
-Open port 5000 and log in using the password in .env (default: teachme123).
-Check: .devcontainer/check_versions.sh
+Open your host browser to:
 
+http://localhost:5000/
+
+
+and you will reach your Flask app running inside the container.
