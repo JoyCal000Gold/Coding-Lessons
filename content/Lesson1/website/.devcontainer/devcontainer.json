@@ -1,1 +1,10 @@
-
+{
+  "name": "Quarto Login Demo",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "settings": {},
+  "postCreateCommand": "pip install flask python-dotenv",
+  "forwardPorts": [5000],
+  "remoteUser": "vscode"
+}
