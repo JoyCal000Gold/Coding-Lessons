@@ -1,13 +1,25 @@
 name: quarto-env
 channels:
   - conda-forge
+  - defaults
 dependencies:
+  # Python and Flask essentials
   - python=3.11
   - flask
   - python-dotenv
-  - quarto
-  - r-base  # R interpreter
+
+  # R and key R packages for Quarto & analysis
+  - r-base=4.3
   - r-tidyverse
   - r-knitr
   - r-markdown
-  - r-irkernel  # enables R kernel in Jupyter/VSCode
+  - r-irkernel  # R kernel for Jupyter/VSCode
+
+  # Jupyter and notebook support (optional, recommended for R kernel)
+  - notebook
+  - ipykernel
+
+  # pip for installing any additional Python packages if needed
+  - pip
+  - pip:
+      # Add Python packages here if needed
