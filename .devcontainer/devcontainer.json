@@ -12,7 +12,7 @@
     },
     "terminal.integrated.defaultProfile.linux": "bash"
   },
-  "postCreateCommand": "/opt/conda/bin/conda init bash && ./check_versions.sh",
+"postCreateCommand": "/opt/conda/bin/conda init bash && ./check_versions.sh",
   "forwardPorts": [5000],
   "remoteUser": "vscode",
   "features": {
