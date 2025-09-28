@@ -3,23 +3,16 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  # Python and Flask essentials
-  - python=3.11
+  - python              # no version means latest stable 
   - flask
   - python-dotenv
-
-  # R and key R packages for Quarto & analysis
-  - r-base=4.3
+  - r-base
   - r-tidyverse
   - r-knitr
   - r-markdown
-  - r-irkernel  # R kernel for Jupyter/VSCode
-
-  # Jupyter and notebook support (optional, recommended for R kernel)
+  - r-irkernel
   - notebook
   - ipykernel
-
-  # pip for installing any additional Python packages if needed
   - pip
   - pip:
-      # Add Python packages here if needed
+      # additional python packages here if needed
