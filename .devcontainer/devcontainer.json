@@ -12,7 +12,8 @@
     },
     "terminal.integrated.defaultProfile.linux": "bash"
   },
- "postCreateCommand": "chmod +x /workspaces/Coding-Lessons/.devcontainer/check_versions.sh && /opt/conda/bin/conda init bash && conda env create -f /workspaces/Coding-Lessons/.devcontainer/environment.yml || conda env update -f /workspaces/Coding-Lessons/.devcontainer/environment.yml && echo 'if [ -z \"$CHECKED_VERSIONS\" ]; then conda activate quarto-env && cd /workspaces/Coding-Lessons && ./.devcontainer/check_versions.sh; export CHECKED_VERSIONS=1; fi' >> ~/.bashrc",
+"postCreateCommand": "chmod +x /workspaces/Coding-Lessons/.devcontainer/check_versions.sh && /opt/conda/bin/conda init bash && grep -qxF 'if conda info --envs | grep -q \"quarto-env\" && [ \"$CONDA_DEFAULT_ENV\" != \"quarto-env\" ]; then conda activate quarto-env; fi' ~/.bashrc || echo 'if conda info --envs | grep -q \"quarto-env\" && [ \"$CONDA_DEFAULT_ENV\" != \"quarto-env\" ]; then conda activate quarto-env; fi' >> ~/.bashrc && grep -qxF 'if [ -z \"$CHECKED_VERSIONS\" ]; then /workspaces/Coding-Lessons/.devcontainer/check_versions.sh; export CHECKED_VERSIONS=1; fi' ~/.bashrc || echo 'if [ -z \"$CHECKED_VERSIONS\" ]; then /workspaces/Coding-Lessons/.devcontainer/check_versions.sh; export CHECKED_VERSIONS=1; fi' >> ~/.bashrc"
+,
   "forwardPorts": [5000],
   "remoteUser": "vscode",
   "features": {
