@@ -11,6 +11,7 @@ This is a Quarto website protected by a password using Flask.
 3. Open terminal and run:
 
 ```bash
+chmod +x .devcontainer/check_versions.sh
 quarto render
 python scripts/flask_server.py
 
