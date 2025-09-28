@@ -7,12 +7,12 @@
     "terminal.integrated.profiles.linux": {
       "bash": {
         "path": "bash",
-        "args": ["-l", "-c", "conda activate quarto-env; exec bash"]
+        "args": ["-l"]
       }
     },
     "terminal.integrated.defaultProfile.linux": "bash"
   },
-  "postCreateCommand": "conda activate quarto-env && ./check_versions.sh",
+  "postCreateCommand": "/opt/conda/bin/conda init bash && echo 'conda activate quarto-env' >> ~/.bashrc && ./check_versions.sh",
   "forwardPorts": [5000],
   "remoteUser": "vscode",
   "features": {
