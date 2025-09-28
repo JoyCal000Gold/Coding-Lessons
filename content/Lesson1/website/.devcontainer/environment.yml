@@ -1,11 +1,13 @@
-name: quarto-demo
+name: quarto-env
 channels:
   - conda-forge
 dependencies:
   - python=3.11
-  - quarto
   - flask
-  - pip
-  - pip:
-      - python-dotenv
-
+  - python-dotenv
+  - quarto
+  - r-base  # R interpreter
+  - r-tidyverse
+  - r-knitr
+  - r-markdown
+  - r-irkernel  # enables R kernel in Jupyter/VSCode
