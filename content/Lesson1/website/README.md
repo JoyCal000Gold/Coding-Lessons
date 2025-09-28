@@ -18,3 +18,5 @@ This is a Quarto website protected by a password using Flask.
 quarto render
 python scripts/flask_server.py
 Open port 5000 and log in using the password in .env (default: teachme123).
+Check: .devcontainer/check_versions.sh
+
