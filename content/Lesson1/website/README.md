@@ -2,11 +2,17 @@
 
 This is a Quarto website protected by a password using Flask.
 
-## How to Use
+---
 
-1. Launch this project in GitHub Codespaces.
-2. In the terminal:
+## ✅ Steps to Test in Codespaces
 
-   ```bash
-   quarto render
-   python scripts/flask_server.py
+1. **Open Codespaces in GitHub**
+2. Wait for dev container to build
+3. Open terminal and run:
+
+```bash
+quarto render
+python scripts/flask_server.py
+
+3. Open port 5000. Login using password from .env.
+4. Default password, nginx: teachme123
