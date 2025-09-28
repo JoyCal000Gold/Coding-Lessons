@@ -1,1 +1,15 @@
+project:
+  type: website
+  output-dir: content/protected
+
+website:
+  title: "Login Protected Site"
+  navbar:
+    right:
+      - text: Home
+        href: index.html
+      - text: Data
+        href: data.html
+      - text: Reports
+        href: reports.html
 
