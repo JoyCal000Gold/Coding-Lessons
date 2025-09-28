@@ -2,6 +2,19 @@
 
 echo "Checking installed versions..."
 
+# Ensure conda is available
+if ! command -v conda &> /dev/null; then
+  echo "Conda not found"
+  exit 1
+fi
+
+# Activate environment if not active
+if [[ "$CONDA_DEFAULT_ENV" != "quarto-env" ]]; then
+  source ~/miniconda3/etc/profile.d/conda.sh 2>/dev/null || source /opt/conda/etc/profile.d/conda.sh
+  conda activate quarto-env
+fi
+
+
 echo -n "Python version: "
 python --version
 
