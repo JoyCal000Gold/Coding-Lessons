@@ -4,7 +4,7 @@
     "dockerfile": "Dockerfile"
   },
   "settings": {},
-  "postCreateCommand": "conda install -y -c conda-forge flask python-dotenv",
+  "postCreateCommand": "conda activate quarto-env && ./check_versions.sh",
   "forwardPorts": [5000],
   "remoteUser": "vscode",
   "features": {
