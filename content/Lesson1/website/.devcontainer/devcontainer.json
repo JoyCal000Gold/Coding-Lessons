@@ -3,7 +3,15 @@
   "build": {
     "dockerfile": "Dockerfile"
   },
-  "settings": {},
+  "settings": {
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "bash",
+        "args": ["-l", "-c", "conda activate quarto-env; exec bash"]
+      }
+    },
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
   "postCreateCommand": "conda activate quarto-env && ./check_versions.sh",
   "forwardPorts": [5000],
   "remoteUser": "vscode",
