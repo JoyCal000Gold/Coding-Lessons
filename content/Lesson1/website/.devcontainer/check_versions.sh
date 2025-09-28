@@ -15,4 +15,3 @@ echo -n "Quarto version: "
 quarto --version
 
 echo "Version checks complete."
-chmod +x .devcontainer/check_versions.sh
